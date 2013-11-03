@@ -1,5 +1,11 @@
 require 'sinatra'
+require 'slim'
+
+set :slim, pretty: true
 
 get '/' do
-  'Hello, world!'
+  # load db
+
+
+  slim :index
 end
