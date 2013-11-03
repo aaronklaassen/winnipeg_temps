@@ -1,23 +1,24 @@
 require 'sinatra'
 require 'slim'
 require 'sqlite3'
+require 'json'
 
 set :slim, pretty: true
 
 get '/' do
-  db = SQLite3::Database.open "db/normals.db"
-  db.results_as_hash = true
-
-  q = db.prepare "SELECT * FROM temperatures"
-  q.execute
-
   slim :index
 end
 
 get '/temperatures.json' do
-  '[    ["Year", "Figure", "Two"],
-        ["2012",  1000,      400],
-        ["2013",  1170,      460],
-        ["2014",  660,       1120],
-        ["2015",  1030,      540]]'
+  content_type :json
+
+  db = SQLite3::Database.open "db/normals.db"
+  
+  q = db.prepare "SELECT
+                    date, low_normal, high_normal, low_actual, high_actual
+                  FROM temperatures"
+  results = q.execute.to_a
+  data = results.unshift ["Date", "Low (Normal)", "High (Normal)", "Low (Actual)", "High (Actual)"]
+
+  data.to_json
 end

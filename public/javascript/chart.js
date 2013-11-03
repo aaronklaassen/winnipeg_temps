@@ -13,9 +13,9 @@ function drawChart(data_array) {
 }
 
 function loadData() {
-  $.get('/temperatures',
+  $.get('/temperatures.json',
     function(json) {
-      drawChart(JSON.parse(json))
+      drawChart(json);
     }
   );
 }
