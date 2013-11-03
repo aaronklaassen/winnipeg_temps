@@ -18,7 +18,7 @@ get '/temperatures.json' do
                     date, low_normal, high_normal, low_actual, high_actual
                   FROM temperatures"
   results = q.execute.to_a
-  data = results.unshift ["Date", "Low (Normal)", "High (Normal)", "Low (Actual)", "High (Actual)"]
+  data = results.unshift ["Date", "Normal Low", "Normal High", "Actual Low", "Actual High"]
 
   data.to_json
 end
