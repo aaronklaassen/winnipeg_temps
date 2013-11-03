@@ -1,18 +1,21 @@
 google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-    ['Year', 'Sales', 'Expenses'],
-    ['2004',  1000,      400],
-    ['2005',  1170,      460],
-    ['2006',  660,       1120],
-    ['2007',  1030,      540]
-  ]);
+google.setOnLoadCallback(loadData);
+
+function drawChart(data_array) {
+  var data = google.visualization.arrayToDataTable(data_array);
 
   var options = {
-    title: 'Company Performance'
+    title: 'Temperatures'
   };
 
   var chart = new google.visualization.LineChart(document.getElementById('temp-chart'));
   chart.draw(data, options);
+}
+
+function loadData() {
+  $.get('/temperatures',
+    function(json) {
+      drawChart(JSON.parse(json))
+    }
+  );
 }
