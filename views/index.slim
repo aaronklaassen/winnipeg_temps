@@ -1,14 +1,26 @@
 doctype html
 html
   head
-    title Complaining about the weather?
+    title Winnipeg Temperatures
     script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
     script type="text/javascript" src="https://www.google.com/jsapi"
     script type="text/javascript" src="javascript/chart.js"
 
   body
     .container
-      .header
-        = @chart_data
+      h1.header Winnipeg Temperatures
+
+
+      form#dates method="get"
+        span
+          label for="start" Start:
+          input#start type="date" name="start" min="2013-09-17" value="#{Date.today - 30}"
+
+        span
+          label for="end" End:
+          input#end type="date" name="end" min="2013-10-23" value="#{Date.today}"
+
+        span
+          input type="submit" value="Update"
 
       #temp-chart
