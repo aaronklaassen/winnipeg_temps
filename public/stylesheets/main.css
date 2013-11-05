@@ -1,0 +1,21 @@
+form
+{
+  margin-left: 40px;
+}
+
+label
+{
+  padding: 5px 10px;
+}
+
+input
+{
+  padding: 1px 3px;
+  font-size: 10pt;
+}
+
+input[type="submit"]
+{
+  font-size: 12pt;
+  margin-left: 10px;
+}

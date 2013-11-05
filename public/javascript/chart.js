@@ -3,11 +3,11 @@ google.setOnLoadCallback(loadData);
 
 
 function drawChart(data_array) {
-  data_array.unshift(["Date", "Normal Low", "Normal High", "Actual Low", "Actual High"]);
+  data_array.unshift(["Date", "Normal High", "Normal Low", "Actual High", "Actual Low"]);
   var data = google.visualization.arrayToDataTable(data_array);
 
   var options = {
-    colors: ["#0000BB", "#0000FF", "#BB0000", "#FF0000"],
+    colors: ["#0000FF", "#0000BB", "#FF0000", "#BB0000"],
     hAxis: { showTextEvery: 7 },
     vAxis: { title: "Temp (°C)" }
   };

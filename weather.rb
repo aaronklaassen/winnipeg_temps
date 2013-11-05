@@ -18,7 +18,7 @@ get '/temperatures.json' do
 
   db = SQLite3::Database.open "db/normals.db"
   q = db.prepare "SELECT
-                    date, low_normal, high_normal, low_actual, high_actual
+                    date, high_normal, low_normal, high_actual, low_actual
                   FROM
                     temperatures
                   WHERE
