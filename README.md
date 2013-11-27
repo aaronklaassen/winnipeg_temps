@@ -10,4 +10,5 @@ Data's coming in via [a scraper](https://github.com/aaronklaassen/normals_scrape
 
 Aaron Klaassen  
 http://www.outerspacehero.com/  
-aaron@outerspacehero.com
+aaron@outerspacehero.com  
+@aaronklaassen
