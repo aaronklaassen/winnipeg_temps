@@ -3,15 +3,33 @@ google.setOnLoadCallback(loadData);
 
 
 function drawChart(data_array) {
-  data_array.unshift(["Date", "Normal High", "Normal Low", "Actual High", "Actual Low", "Current"]);
-  var data = google.visualization.arrayToDataTable(data_array);
-
+  
+  column_names = ["Date", "Normal High", "Normal Low", "Actual High", "Actual Low"]
   var options = {
     colors: ["#0000FF", "#0000BB", "#FF0000", "#BB0000"],
     hAxis: { showTextEvery: 7 },
     vAxis: { title: "Temp (°C)" },
-    series: { 4: { pointSize: 10, color: "#FFAA00" } }
   };
+
+  var contains_today = false;
+  data_array.forEach(function(day) {
+    if (day[5] != null) {
+      contains_today = true;
+    }
+  });
+
+  if (contains_today) {
+    column_names.push("Current Temp");
+    options.series = { 4: { pointSize: 10, color: "#FFAA00" } }
+  } else {
+    data_array = data_array.map(function(day) {
+      return day.slice(0, 5);
+    });
+  }
+
+  data_array.unshift(column_names);
+
+  var data = google.visualization.arrayToDataTable(data_array);
 
   var chart = new google.visualization.LineChart(document.getElementById('temp-chart'));
   chart.draw(data, options);
@@ -29,7 +47,6 @@ function loadData() {
     }
   );
 }
-
 
 $(function() {
   $('form').submit(function(e) {
