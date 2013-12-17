@@ -15,11 +15,11 @@ html
       form#dates method="get"
         span
           label for="start" Start:
-          input#start type="date" name="start" min="2013-09-17" max="#{Date.today - 1}" value="#{Date.today - 30}"
+          input#start type="date" name="start" min="2013-09-17" max="#{Date.today - 1}" value="#{@start}"
 
         span
           label for="end" End:
-          input#end type="date" name="end" min="2013-10-23" max="#{Date.today}" value="#{Date.today}"
+          input#end type="date" name="end" min="2013-10-23" max="#{Date.today}" value="#{@end}"
 
         span
           input type="submit" value="Update"

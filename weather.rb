@@ -9,6 +9,8 @@ require 'pry'
 set :slim, pretty: true
 
 get '/' do
+  @start = params[:start] || Date.today - 30
+  @end   = params[:end]   || Date.today
   slim :index
 end
 
