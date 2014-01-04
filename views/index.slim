@@ -12,7 +12,6 @@ html
     .container
       h1.header Winnipeg Temperatures
 
-
       form#dates method="get"
         span
           label for="start" Start:
@@ -24,6 +23,10 @@ html
 
         span
           input type="submit" value="Update"
+
+        span.permalink
+          | permalink: 
+          a href="/" here
 
       #temp-chart
 

@@ -48,9 +48,19 @@ function loadData() {
   );
 }
 
+function updatePermalink() {
+  var url = "http://" + window.location.host + "?start=" + $("#start").val() + "&end=" + $("#end").val();;
+  $(".permalink a").attr('href', url);
+  $(".permalink a").html(url);
+
+}
+
 $(function() {
+  updatePermalink();
+
   $('form').submit(function(e) {
     e.preventDefault();
     loadData();
+    updatePermalink();
   });
 });
